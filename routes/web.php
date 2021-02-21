@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+// use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,17 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+use App\Http\Controllers\auth\LoginController;
+Route::get('login',[LoginController::class,'login'])->name('login');
+Route::post('login',[LoginController::class,'authenticate'])->name('login.authenticate');
 
 
-Route::group(['middleware' => 'auth'],function() {
-
-
-
-});
-
-
-
-// use App\Http\Controllers\Auth\LoginController;
+// Route::group(['middleware' => 'auth'],function() {
 
 Route::get('dashboard', function () {
     return view('welcome');
@@ -33,10 +29,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-use App\Http\Controllers\Auth\LoginController;
-Route::get('login',[LoginController::class,'login'])->name('login');
-Route::post('login',[LoginController::class,'authenticate'])->name('login.authenticate');
 
+
+// use App\Http\Controllers\auth\LoginController;
 Route::get('logout',[LoginController::class,'logout'])->name('logout');
 
 
@@ -47,8 +42,8 @@ Route::post('groups',[UserGroupController::class, 'store']);
 Route::delete('groups/{id}',[UserGroupController::class, 'destroy']);
 
 
-//All are use for user info 
-//All are use for user info 
+//All  user info 
+//All  user info 
 
 use App\Http\Controllers\UserController;
 Route::resource('users',UserController::class);
@@ -85,5 +80,10 @@ Route::resource('products',ProductsController::class);
 
 	
 	
+
+
+
+// });
+
 
 
