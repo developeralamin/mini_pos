@@ -63,7 +63,7 @@
 <div class="mb-3 row">
 	<label for="Email" class="col-sm-2 col-form-label"> Description<span class="text-danger">*</span></label>
    <div class="col-sm-10">
-    {{ Form::text('description',NULL,['class '=>'form-control','id' => 'description','placeholder' => 'Description']) }}		    
+    {{ Form::textarea('description',NULL,['class '=>'form-control','id' => 'description','placeholder' => 'Description']) }}		    
   </div>
 </div>
 

@@ -48,12 +48,9 @@
           <td class="text-right">
 
 <form method='post' action="{{ route('users.destroy',['user'=> $user->id]) }}">
-    <a href="{{ route('users.show',['user'=> $user->id]) }}"class="btn btn-info">
+   <a href="{{ route('user.sales.invoice_details',['id'=> $user->id,'invoice_id'=>$sale->id]) }}"class="btn btn-info">
       <i class="fa fa-eye"></i>
-     </a> 
-     <a href="{{ route('users.edit',['user'=> $user->id]) }}"class="btn btn-info">
-      <i class="fa fa-edit"></i>
-     </a>   
+     </a>    
       @csrf
       @method('DELETE')               
      <button onclick="return confirm('Are you sure?')" type="submit" class="btn btn-danger"> <i class="fa fa-trash"></i></button>                 

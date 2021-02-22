@@ -22,11 +22,11 @@ Route::post('login',[LoginController::class,'authenticate'])->name('login.authen
 // Route::group(['middleware' => 'auth'],function() {
 
 Route::get('dashboard', function () {
-    return view('welcome');
+				return view('welcome');
 });
 
 Route::get('/', function () {
-    return view('welcome');
+				return view('welcome');
 });
 
 
@@ -42,18 +42,28 @@ Route::post('groups',[UserGroupController::class, 'store']);
 Route::delete('groups/{id}',[UserGroupController::class, 'destroy']);
 
 
-//All  user info 
-//All  user info 
+
+
 
 use App\Http\Controllers\UserController;
 Route::resource('users',UserController::class);
 
 use App\Http\Controllers\UserSalesController;
 Route::get('users/{id}/sales',[UserSalesController::class,'index'])->name('user.sales');
+Route::post('users/{id}/invoices',[UserSalesController::class,'createinvoice'])->name('user.sales.store');
+Route::get('users/{id}/invoices/{invoice_id}',[UserSalesController::class,'detialsinvoice'])->name('user.sales.invoice_details');
+
+
+
+
+
+
+// UserGroup Controller
 
 use App\Http\Controllers\UserPurchasesController;
 Route::get('users/{id}/purchases',[UserPurchasesController::class,'index'])->name('user.purchases');
 
+// Payment Controller
 
 use App\Http\Controllers\UserPaymentsController;
 Route::get('users/{id}/payments',[UserPaymentsController::class,'index'])->name('user.payments');

@@ -27,7 +27,7 @@
               <th>ID</th>
               <th>Category</th>
               <th>Title</th>
-              <th>Description</th>
+              {{-- <th>Description</th> --}}
               <th>Cost Price</th>
               <th>Price</th>
               <th class="text-right">Actions</th>                          
@@ -38,8 +38,8 @@
               <th>ID</th>
               <th>Category</th>
               <th>Title</th>
-              <th>Description</th>
-              <th>Cost Price</th>
+{{--               <th>Description</th>
+ --}}              <th>Cost Price</th>
               <th>Price</th>
                 <th class="text-right">Actions</th>
               </tr>
@@ -51,7 +51,7 @@
           <td>{{ $product->id }}</td>
           <td>{{ $product->category->title}}</td>
           <td>{{ $product->title }}</td>
-          <td>{{ $product->description }}</td>
+          {{-- <td>{{ $product->description }}</td> --}}
           <td>{{ $product->cost_price }}</td>
           <td>{{ $product->price }}</td>
           <td class="text-right">

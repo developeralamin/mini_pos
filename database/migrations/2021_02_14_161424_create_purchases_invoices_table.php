@@ -19,7 +19,7 @@ class CreatePurchasesInvoicesTable extends Migration
             $table->foreignId('user_id');
             $table->string('challan_no')->nullable();
             $table->date('date');
-            $table->double('total');
+            $table->double('total')->nullable();
             $table->timestamps();
         });
     }
