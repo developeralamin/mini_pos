@@ -51,10 +51,8 @@
                  <tbody>
 @foreach($user->payments as $payment)
        <tr>
-          {{-- <td>{{ $user->name}}</td> --}}
-         
           <td>{{ $payment->date }}</td>
-           <td class="text-right">{{ $payment->amount }}</td>
+          <td class="text-right">{{ $payment->amount }}</td>
           <td>{{ $payment->note }}</td>
           <td class="text-right">
 

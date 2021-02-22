@@ -4,6 +4,18 @@
 
 
    <div class="card shadow mb-4">
+      
+
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
 
       <div class="card-header py-3">
           
@@ -40,13 +52,12 @@
                  <tbody>
 @foreach($user->receipts as $receipt)
        <tr> 
-           <td>{{ $receipt->date }}</td>
+          <td>{{ $receipt->date }}</td>
           <td class="text-right">{{ $receipt->amount }}</td>
           <td>{{ $receipt->note }}</td>
           <td class="text-right">
 
-<form method='post' action="{{ route('users.destroy',['user'=> $user->id]) }}">
-  
+<form method='post' action="{{ route('user.receipts.destroy',['id'=> $user->id,'receipts_id' => $receipt->id]) }}">
       @csrf
       @method('DELETE')               
      <button onclick="return confirm('Are you sure?')" type="submit" class="btn btn-danger"> <i class="fa fa-trash"></i></button>                 

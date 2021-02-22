@@ -32,6 +32,8 @@ class UserPaymentsController extends Controller
         return redirect()->route('user.payments',['id' => $user_id]);
    }
 
+   
+
    public function destroy($user_id , $payment_id)
    {
    	   if(Payment::destroy($payment_id)){

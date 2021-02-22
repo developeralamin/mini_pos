@@ -10,7 +10,10 @@
      </div>
 
      <div class="col-md-6 text-right">
-      <a href="{{ url('users/create') }}" class="btn btn-info"> <i class="fa fa-plus"></i> New Sale</a>
+
+<button type="button" class="btn btn-info" data-toggle="modal" data-target="#newpurchase">
+  <i class="fa fa-plus"></i> New Sale
+</button>
 
         
 <button type="button" class="btn btn-info" data-toggle="modal" data-target="#newpurchase">
@@ -117,7 +120,7 @@
 
 <div class="modal fade" id="newreceipt" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 
-  {!! Form::open(['route' => ['user.payments.store',$user->id],'method' => 'post']) !!}
+  {!! Form::open(['route' => ['user.receipts.store',$user->id],'method' => 'post']) !!}
 
   <div class="modal-dialog" role="document">
     <div class="modal-content">
