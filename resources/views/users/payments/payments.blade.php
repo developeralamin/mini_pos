@@ -31,6 +31,7 @@
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
+                                              <th>Admin</th>
                                               <th>Date</th>
                                                 <th class="text-right">Total</th>
                                                 <th>Note</th>
@@ -40,7 +41,7 @@
                                         </thead>
                                         <tfoot>
                                             <tr>
-                                                <th colspan="" class="text-right">Total:</th>
+                                                <th colspan="2" class="text-right">Total:</th>
                                                 <th class="text-right">{{ $user->payments()->sum('amount') }}</th>
                                               
                                                <th colspan="">Note</th>
@@ -51,6 +52,7 @@
                  <tbody>
 @foreach($user->payments as $payment)
        <tr>
+          <td>{{ optional($payment->admin)->name  }}</td>
           <td>{{ $payment->date }}</td>
           <td class="text-right">{{ $payment->amount }}</td>
           <td>{{ $payment->note }}</td>

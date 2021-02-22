@@ -32,6 +32,7 @@
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
+                                                <th>Admin</th>
                                                 <th>Date</th>
                                                 <th class="text-right">Total</th>
                                                 <th>Note</th>
@@ -41,7 +42,7 @@
                                         </thead>
                                         <tfoot>
                                             <tr>
-                                                <th colspan="" class="text-right">Total:</th>
+                                                <th colspan="2" class="text-right">Total:</th>
                                                 <th class="text-right">{{ $user->receipts()->sum('amount') }}</th>
                                               
                                                <th colspan="">Note</th>
@@ -52,6 +53,7 @@
                  <tbody>
 @foreach($user->receipts as $receipt)
        <tr> 
+          <td>{{ optional($receipt->admin)->name  }}</td>
           <td>{{ $receipt->date }}</td>
           <td class="text-right">{{ $receipt->amount }}</td>
           <td>{{ $receipt->note }}</td>

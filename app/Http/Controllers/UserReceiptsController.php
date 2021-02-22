@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Http\Requests\ReceiptRequest;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Receipt;
 
 class UserReceiptsController extends Controller
@@ -25,6 +26,7 @@ class UserReceiptsController extends Controller
   {
   	    $formdata                = $request->all();
         $formdata['user_id']     = $user_id;
+        $formdata['admin_id']     = Auth::id();
 
       if(Receipt::create($formdata)){
 
