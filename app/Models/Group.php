@@ -14,6 +14,7 @@ class Group extends Model
   {
     return $this->hasMany(User::class);
   }
+  
 	  /**
 	   ** Getting array for select option
 	  **/
