@@ -22,35 +22,33 @@
       </div>
 
 <div class="card shadow mb-4">
-                            <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">Receipts of <strong>{{ $user->name }}</strong></h6>
-                            </div>
-                            <div class="card-body">
+    <div class="card-header py-3">
+       <h6 class="m-0 font-weight-bold text-primary">Receipts of <strong>{{ $user->name }}</strong></h6>
+    </div>
 
-                                <div class="table-responsive">
-                                
-                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                        <thead>
-                                            <tr>
-                                                <th>Admin</th>
-                                                <th>Date</th>
-                                                <th class="text-right">Total</th>
-                                                <th>Note</th>
-                                                <th class="text-right">Actions</th>
-                                           
-                                            </tr>
-                                        </thead>
-                                        <tfoot>
-                                            <tr>
-                                                <th colspan="2" class="text-right">Total:</th>
-                                                <th class="text-right">{{ $user->receipts()->sum('amount') }}</th>
-                                              
-                                               <th colspan="">Note</th>
-                                                <th class="text-right">Actions</th>
-                                            </tr>
-                                        </tfoot>
+<div class="card-body">
+  <div class="table-responsive">                      
+      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+              <tr>
+                <th>Admin</th>
+                <th>Date</th>
+                <th class="text-right">Total</th>
+                <th>Note</th>
+                <th class="text-right">Actions</th>                          
+              </tr>
+            </thead>
+
+        <tfoot>
+          <tr>
+            <th colspan="2" class="text-right">Total:</th>
+            <th class="text-right">{{ $user->receipts()->sum('amount') }}</th>
+            <th colspan="">Note</th>
+            <th class="text-right">Actions</th>
+          </tr>
+        </tfoot>
                                        
-                 <tbody>
+  <tbody>
 @foreach($user->receipts as $receipt)
        <tr> 
           <td>{{ optional($receipt->admin)->name  }}</td>

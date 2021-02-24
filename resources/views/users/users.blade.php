@@ -1,6 +1,7 @@
 @extends('layout.main')
 
 @section('main_content')
+
   <div class="row page-header">
   	 <div class="col-md-6">
   	 	<h2>User Information</h2>
@@ -63,9 +64,20 @@
      <a href="{{ route('users.edit',['user'=> $user->id]) }}"class="btn btn-info">
       <i class="fa fa-edit"></i>
      </a>  	
+
+    @if( 
+      $user->sales()->count() == 0 &&
+      $user->receipts()->count() == 0 &&
+      $user->purchases()->count() == 0 &&
+      $user->payments()->count() == 0 
+
+      )
+
 	    @csrf
 	    @method('DELETE')             	
-	   <button onclick="return confirm('Are you sure?')" type="submit" class="btn btn-danger"> <i class="fa fa-trash"></i></button>               	
+	   <button onclick="return confirm('Are you sure?')" type="submit" class="btn btn-danger"> <i class="fa fa-trash"></i></button> 
+   @endif
+
 	</form>
                                            
    </td>

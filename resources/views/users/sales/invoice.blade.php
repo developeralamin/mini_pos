@@ -1,4 +1,4 @@
-@extends('users.user_layout')
+@extends('users.invoice_user_layout')
 
 @section('user_content')
 
@@ -57,14 +57,31 @@
            @endforeach
           </tbody>
 
-          <tfoot>
+          <tr>
              <th></th>
              <th>
               <button data-toggle="modal" data-target="#newProduct" class="btn btn-info"><i class="fa fa-plus">Add Product</i></button> 
               <th>
              <th colspan="" class="text-right">Total =</th>
-             <th>{{ $invoice->items()->sum('total') }}</th>
-          </tfoot>
+             <th>{{ $totalPayable= $invoice->items()->sum('total') }}</th>
+          </tr>
+
+
+          <tr>
+             <th></th>
+             <th>
+              <button data-toggle="modal" data-target="#newrReceiptForInvoice" class="btn btn-primary"><i class="fa fa-plus">Add Receipt</i></button> 
+              <th>
+             <th colspan="" class="text-right">Paid =</th>
+             <th>{{ $totalPaid =$invoice->receipts()->sum('amount') }}</th>
+          </tr>
+
+           <tr>
+             <th></th>
+             
+             <th colspan="3" class="text-right">Due =</th>
+             <th>{{ $totalPayable - $totalPaid }}</th>
+          </tr>
 
         </table>
      </div>
@@ -128,7 +145,62 @@
           {{ Form::text('total',NULL,['class '=>'form-control','id' => 'total','rows' => '3','placeholder' => 'Total']) }}        
         </div>
       </div>
+       </div>
 
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+
+{!! Form::close() !!}
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<!-----Modal for ReceiptInvoice----->
+
+<div class="modal fade" id="newrReceiptForInvoice" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+  {!! Form::open(['route' => ['user.receipts.store',[$user->id,$invoice->id] ],'method' => 'post']) !!}
+
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New Receipts For This Invoice</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+
+    <div class="mb-3 row">
+      <label for="Name" class="col-sm-2 col-form-label">Amount<span class="text-danger">*</span></label>
+       <div class="col-sm-10">
+      {{ Form::text('amount',NULL,['class '=>'form-control', 'required','id' => 'name','placeholder' => 'Amount']) }}
+      </div>
+    </div>
+
+
+      <div class="mb-3 row">
+        <label for="Email" class="col-sm-2 col-form-label">Date<span class="text-danger">*</span></label>
+         <div class="col-sm-10">
+          {{ Form::date('date',NULL,['class '=>'form-control','required','id' => 'date','placeholder' => 'Date']) }}        
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label for="Email" class="col-sm-2 col-form-label">Note</label>
+         <div class="col-sm-10">
+          {{ Form::textarea('note',NULL,['class '=>'form-control','id' => 'note','rows' => '3','placeholder' => 'Note']) }}        
+        </div>
+      </div>
 
        </div>
 
@@ -142,5 +214,9 @@
     </div>
   </div>
 </div>
+
+
+
+
 
 @stop
