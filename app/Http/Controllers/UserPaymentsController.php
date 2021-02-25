@@ -22,16 +22,29 @@ class UserPaymentsController extends Controller
     }
     
 
-   public function store(PaymentRequest $request, $user_id)
+   public function store(PaymentRequest $request, $user_id , $invoice_id = null)
    {
         $formdata                = $request->all();
         $formdata['user_id']     = $user_id;
         $formdata['admin_id']     = Auth::id();
 
+
+        if($invoice_id){ 
+           $formdata['purchases_invoice_id'] = $invoice_id;
+        }
          if(Payment::create($formdata)){
             Session::flash('message', 'Payment Added Successfully');
         }
-        return redirect()->route('user.payments',['id' => $user_id]);
+
+    if($invoice_id){
+
+      return redirect()->route('user.purchase.invoice_details',['id'=> $user_id,
+        'invoice_id'=> $invoice_id]);
+    }else{
+      return redirect()->route('users.show',['user' => $user_id]);
+    }
+
+        
    }
 
    

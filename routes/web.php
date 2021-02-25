@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//Route for Login
 use App\Http\Controllers\auth\LoginController;
 Route::get('login',[LoginController::class,'login'])->name('login');
 Route::post('login',[LoginController::class,'authenticate'])->name('login.authenticate');
@@ -35,6 +36,7 @@ Route::get('/', function () {
 Route::get('logout',[LoginController::class,'logout'])->name('logout');
 
 
+//Route for UserGroup
 use App\Http\Controllers\UserGroupController;
 Route::get('groups',[UserGroupController::class, 'index']);
 Route::get('groups/create',[UserGroupController::class, 'create']);
@@ -43,13 +45,14 @@ Route::delete('groups/{id}',[UserGroupController::class, 'destroy']);
 
 
 
-
+//Route for Sales
 
 use App\Http\Controllers\UserController;
 Route::resource('users',UserController::class);
 
 use App\Http\Controllers\UserSalesController;
 Route::get('users/{id}/sales',[UserSalesController::class,'index'])->name('user.sales');
+
 Route::post('users/{id}/invoices',[UserSalesController::class,'createinvoice'])->name('user.sales.store');
 Route::get('users/{id}/invoices/{invoice_id}',[UserSalesController::class,'detialsinvoice'])->name('user.sales.invoice_details');
 
@@ -65,23 +68,38 @@ Route::delete('users/{id}/invoices/{invoice_id}/{item_id}',[UserSalesController:
 
 
 
-// UserGroup Controller
+//Route for Purchases
 
 use App\Http\Controllers\UserPurchasesController;
 Route::get('users/{id}/purchases',[UserPurchasesController::class,'index'])->name('user.purchases');
 
-// Payment Controller
+Route::post('users/{id}/purchases',[UserPurchasesController::class,'createinvoice'])->name('user.purchase.store');
 
+Route::get('users/{id}/purchases/{invoice_id}',[UserPurchasesController::class,'detialsinvoice'])->name('user.purchase.invoice_details');
+
+
+Route::delete('users/{id}/purchases/{invoice_id}',[UserPurchasesController::class,'destroy'])->name('user.purchase.destroy');
+
+Route::post('users/{id}/purchases/{invoice_id}',[UserPurchasesController::class,'additem'])->name('user.purchase.additem');
+
+Route::delete('users/{id}/purchases/{invoice_id}/{item_id}',[UserPurchasesController::class,'destroyItem'])->name('user.purchase.delete_item');
+
+
+
+
+
+
+//Route for Payment
 use App\Http\Controllers\UserPaymentsController;
 Route::get('users/{id}/payments',[UserPaymentsController::class,'index'])->name('user.payments');
 
-Route::post('users/{id}/payments',[UserPaymentsController::class,'store'])->name('user.payments.store');
+Route::post('users/{id}/payments/{invoice_id?}',[UserPaymentsController::class,'store'])->name('user.payments.store');
 
 Route::delete('users/{id}/payments/{payments_id}',[UserPaymentsController::class,'destroy'])->name('user.payments.destroy');
 
 
 
-
+//Route for Receipts
 use App\Http\Controllers\UserReceiptsController;
 Route::get('users/{id}/receipts',[UserReceiptsController::class,'index'])->name('user.receipts');
 Route::post('users/{id}/receipts/{invoice_id?}',[UserReceiptsController::class,'store'])->name('user.receipts.store');
@@ -90,11 +108,11 @@ Route::delete('users/{id}/receipts/{receipts_id}',[UserReceiptsController::class
 
 
 
-//Category Controller
+//Route for Category
 use App\Http\Controllers\CategoryController;
 Route::resource('categories',CategoryController::class,['except' => ['show'] ]);
 
-//Category Controller
+//Route for Products
 use App\Http\Controllers\ProductsController;
 Route::resource('products',ProductsController::class);
 

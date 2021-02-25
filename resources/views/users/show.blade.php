@@ -1,10 +1,11 @@
 @extends('users.user_layout')
 
-@section('user_content')
 
-<div class="row">
+@section('card_user')
 
-<div class="col-xl-3 col-md-6 mb-4">
+<div class="row" style="padding-top:-50px;padding-bottom:15px;">
+
+<div class="col-xl-2 col-md-3 mb-3">
   <div class="card border-left-success shadow h-100 py-2">
     <div class="card-body">
       <div class="row no-gutters align-items-center">
@@ -14,12 +15,12 @@
           </div>
           <div class="h5 mb-0 font-weight-bold text-gray-800">
             <?php 
-            $total =0;
+            $totalSales =0;
 
             foreach ($user->sales as $sale) {
-                $total +=$sale->items()->sum('total');
+                $totalSales +=$sale->items()->sum('total');
             }
-            echo $total;
+            echo $totalSales;
 
             ?>
 
@@ -34,7 +35,7 @@
 </div>
 
 
-<div class="col-xl-3 col-md-6 mb-4">
+<div class="col-xl-2 col-md-3 mb-4">
   <div class="card border-left-success shadow h-100 py-2">
     <div class="card-body">
       <div class="row no-gutters align-items-center">
@@ -45,12 +46,12 @@
           <div class="h5 mb-0 font-weight-bold text-gray-800">
             
             <?php 
-            $total = 0;
+            $totalPurchase = 0;
 
             foreach ($user->purchases as $purchase) {
-                $total +=$purchase->items()->sum('total');
+                $totalPurchase +=$purchase->items()->sum('total');
             }
-            echo $total;
+            echo $totalPurchase;
 
             ?>
 
@@ -64,27 +65,7 @@
   </div>
 </div>
 
-
-<div class="col-xl-3 col-md-6 mb-4">
-  <div class="card border-left-success shadow h-100 py-2">
-    <div class="card-body">
-      <div class="row no-gutters align-items-center">
-        <div class="col mr-2">
-          <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-            Total Payment
-          </div>
-          <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $user->payments()->sum('amount') }}</div>
-          </div>
-            <div class="col-auto">
-               <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-            </div>
-        </div>
-      </div>
-  </div>
-</div>
-
-
-<div class="col-xl-3 col-md-6 mb-4">
+<div class="col-xl-2 col-md-3 mb-3">
   <div class="card border-left-success shadow h-100 py-2">
     <div class="card-body">
       <div class="row no-gutters align-items-center">
@@ -92,7 +73,7 @@
           <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                  Total Receipts
           </div>
-          <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $user->receipts()->sum('amount') }}</div>
+          <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $totalReceipt =$user->receipts()->sum('amount') }}</div>
           </div>
             <div class="col-auto">
                <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -103,7 +84,94 @@
 </div>
 
 
+<div class="col-xl-2 col-md-3 mb-3">
+  <div class="card border-left-success shadow h-100 py-2">
+    <div class="card-body">
+      <div class="row no-gutters align-items-center">
+        <div class="col mr-2">
+          <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+            Total Payment
+          </div>
+          <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $totalPayment=$user->payments()->sum('amount') }}</div>
+          </div>
+            <div class="col-auto">
+               <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+            </div>
+        </div>
+      </div>
+  </div>
 </div>
+
+ <?php
+  $totalBalance =($totalPurchase + $totalReceipt) - ($totalSales + $totalPayment);
+
+ ?>
+
+
+<div class="col-xl-2 col-md-3 mb-3">
+  <div class="card border-left-success shadow h-100 py-2">
+    <div class="card-body">
+      <div class="row no-gutters align-items-center">
+        <div class="col mr-2">
+          <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+            Balance
+          </div>
+          <div class="h5 mb-0 font-weight-bold text-gray-800">
+
+            @if($totalBalance > 0)
+
+            {{ $totalBalance }}
+            
+            @else
+              0
+             @endif
+         </div>
+          </div>
+            <div class="col-auto">
+               <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+            </div>
+        </div>
+      </div>
+  </div>
+</div>
+
+
+<div class="col-xl-2 col-md-3 mb-3">
+  <div class="card border-left-success shadow h-100 py-2">
+    <div class="card-body">
+      <div class="row no-gutters align-items-center">
+        <div class="col mr-2">
+          <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+            Due
+          </div>
+          <div class="h5 mb-0 font-weight-bold text-gray-800">
+
+          @if($totalBalance < 0)
+          {{ $totalBalance }}
+          
+          @else
+             0
+
+           @endif
+
+
+          </div>
+          </div>
+            <div class="col-auto">
+               <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+            </div>
+        </div>
+      </div>
+  </div>
+</div>
+
+</div>
+
+@stop 
+
+
+@section('user_content')
+
 
 
    <div class="card shadow mb-4">

@@ -6,14 +6,14 @@
    <div class="card shadow mb-4">
 
       <div class="card-header py-3">
-          <h6 class="m-0 font-weight-bold text-primary">Sale Invoice Details</h6>
+          <h6 class="m-0 font-weight-bold text-primary">Purchases Invoice Details</h6>
       </div>
 
   <div class="card-body user_show">
 
       <div class="row justify-content-md-center">
         <div class="col-md-6">
-          <p><strong>Customer : </strong> {{ $user->name }}</p>
+          <p><strong>Supplier : </strong> {{ $user->name }}</p>
           <p><strong>Email : </strong>{{ $user->email }}</p>
           <p><strong>Phone : </strong>{{ $user->phone }}</p>
         </div>
@@ -45,7 +45,7 @@
                <td>{{ $item->total }}</td>
               <td class="text-right">
 
-    <form method='post' action="{{ route('user.sales.invoice.delete_item',
+    <form method='post' action="{{ route('user.purchase.delete_item',
        ['id'=> $user->id,'invoice_id' =>$invoice->id,'item_id'=>$item->id]) }}">   
           @csrf
           @method('DELETE')               
@@ -70,10 +70,10 @@
           <tr>
              <th></th>
              <th>
-              <button data-toggle="modal" data-target="#newrReceiptForInvoice" class="btn btn-primary"><i class="fa fa-plus">Add Receipt</i></button> 
+              <button data-toggle="modal" data-target="#newrReceiptForInvoice" class="btn btn-primary"><i class="fa fa-plus">Add Payment</i></button> 
               <th>
              <th colspan="" class="text-right">Paid =</th>
-             <th>{{ $totalPaid =$invoice->receipts()->sum('amount') }}</th>
+             <th>{{ $totalPaid =$invoice->payments()->sum('amount') }}</th>
           </tr>
 
            <tr>
@@ -86,14 +86,7 @@
         </table>
      </div>
 
-
-
-
-
-
    </div>
-    
-
     
  </div>
 
@@ -103,7 +96,7 @@
 
 <div class="modal fade" id="newProduct" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 
-  {!! Form::open(['route' => ['user.sales.invoice.additem', ['id' => $user->id, 
+  {!! Form::open(['route' => ['user.purchase.additem', ['id' => $user->id, 
     'invoice_id' => $invoice->id] ], 'method' => 'post' ]) !!}
 
   <div class="modal-dialog" role="document">
@@ -172,7 +165,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">New Receipts For This Invoice</h5>
+        <h5 class="modal-title" id="exampleModalLabel">New Payment For This Invoice</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

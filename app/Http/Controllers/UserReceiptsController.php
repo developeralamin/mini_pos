@@ -43,10 +43,10 @@ class UserReceiptsController extends Controller
 
       return redirect()->route('user.sales.invoice_details',['id'=> $user_id,
         'invoice_id'=> $invoice_id]);
-
     }
+    
     else{
-       return redirect()->route('user.receipts',['id' => $user_id]);
+       return redirect()->route('users.show',['user' => $user_id]);
     }
 
      

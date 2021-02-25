@@ -1,6 +1,9 @@
 @extends('layout.main')
 
 @section('main_content')
+     
+   @yield('card_user')
+
 
   <div class="row page-header">
   	 <div class="col-md-6">
