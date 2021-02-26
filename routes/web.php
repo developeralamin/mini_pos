@@ -116,7 +116,8 @@ Route::resource('categories',CategoryController::class,['except' => ['show'] ]);
 use App\Http\Controllers\ProductsController;
 Route::resource('products',ProductsController::class);
 
-	
+use App\Http\Controllers\ProductStocksController;
+Route::get('stocks',[ProductStocksController::class, 'index'])->name('stocks');	
 	
 
 

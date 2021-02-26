@@ -2,7 +2,7 @@
 
 @section('main_content')
 
-
+ @yield('card_user')
 
   <div class="row page-header ">
 
@@ -32,7 +32,7 @@
       
   </div>
 
- @yield('card_user')
+
 @include('users.user_layout_content')
 
 

@@ -1,9 +1,9 @@
 @extends('users.user_layout')
 
-
+@section('user_content')
 @section('card_user')
 
-<div class="row" style="padding-top:-50px;padding-bottom:15px;">
+<div class="row" style="padding-top:-50px; padding-bottom:15px;">
 
 <div class="col-xl-2 col-md-3 mb-3">
   <div class="card border-left-success shadow h-100 py-2">
@@ -170,7 +170,7 @@
 @stop 
 
 
-@section('user_content')
+
 
 
 

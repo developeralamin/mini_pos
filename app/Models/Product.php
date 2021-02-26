@@ -18,7 +18,18 @@ class Product extends Model
     return $this->belongsTo(Category::class);
   }
 
-  /**
+  public function salesItems()
+  {
+    return $this->hasMany(SaleItem::class);
+  }
+
+  public function purchaseItems()
+  {
+    return $this->hasMany(PurchasesItem::class);
+  }
+
+
+    /**
 	   ** Getting array for select option
 	  **/
       public static function arrayforSelectGroup(){
