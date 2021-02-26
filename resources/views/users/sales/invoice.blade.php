@@ -167,7 +167,7 @@
 
 <div class="modal fade" id="newrReceiptForInvoice" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 
-  {!! Form::open(['route' => ['user.payments.store',[$user->id,$invoice->id] ],'method' => 'post']) !!}
+  {!! Form::open(['route' => ['user.receipts.store',[$user->id,$invoice->id] ],'method' => 'post']) !!}
 
   <div class="modal-dialog" role="document">
     <div class="modal-content">
