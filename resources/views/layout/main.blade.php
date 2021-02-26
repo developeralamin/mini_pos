@@ -71,6 +71,29 @@
             </li>
 
 
+
+         <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilitiesthree"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>Reports</span>
+                </a>
+        <div id="collapseUtilitiesthree" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                        
+        <a class="collapse-item" href="{{route('reports.sales')}}">Sales</a>
+        <a class="collapse-item" href="{{route('reports.sales') }}">Purchase</a>
+        <a class="collapse-item" href="{{route('reports.sales') }}">Payments</a>
+        <a class="collapse-item" href="{{route('reports.sales') }}">Receipts</a>
+                        
+                
+                    </div>
+                </div>
+            </li>
+
+
+
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 

@@ -32,7 +32,6 @@ Route::get('/', function () {
 
 
 
-// use App\Http\Controllers\auth\LoginController;
 Route::get('logout',[LoginController::class,'logout'])->name('logout');
 
 
@@ -65,9 +64,6 @@ Route::delete('users/{id}/invoices/{invoice_id}/{item_id}',[UserSalesController:
 
 
 
-
-
-
 //Route for Purchases
 
 use App\Http\Controllers\UserPurchasesController;
@@ -83,8 +79,6 @@ Route::delete('users/{id}/purchases/{invoice_id}',[UserPurchasesController::clas
 Route::post('users/{id}/purchases/{invoice_id}',[UserPurchasesController::class,'additem'])->name('user.purchase.additem');
 
 Route::delete('users/{id}/purchases/{invoice_id}/{item_id}',[UserPurchasesController::class,'destroyItem'])->name('user.purchase.delete_item');
-
-
 
 
 
@@ -112,17 +106,19 @@ Route::delete('users/{id}/receipts/{receipts_id}',[UserReceiptsController::class
 use App\Http\Controllers\CategoryController;
 Route::resource('categories',CategoryController::class,['except' => ['show'] ]);
 
+
 //Route for Products
 use App\Http\Controllers\ProductsController;
 Route::resource('products',ProductsController::class);
 
+//Route for ProductStocks
 use App\Http\Controllers\ProductStocksController;
 Route::get('stocks',[ProductStocksController::class, 'index'])->name('stocks');	
 	
 
-
-
-// });
+//Route for ReportSales
+ use App\Http\Controllers\Report\ReportSalesController;
+ Route::get('reports/sales',[ReportSalesController::class, 'index'])->name('reports.sales');	
 
 
 
