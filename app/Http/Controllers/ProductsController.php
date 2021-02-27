@@ -10,6 +10,17 @@ use App\Models\Category;
 
 class ProductsController extends Controller
 {
+
+public function __construct()
+ {
+    parent::__construct();
+    $this->data['main_menu']  = 'Products';
+    $this->data['sub_menu']   = 'Product';
+
+ }
+
+
+
     /**
      * Display a listing of the resource.
      *

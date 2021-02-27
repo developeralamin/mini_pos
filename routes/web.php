@@ -23,11 +23,11 @@ Route::post('login',[LoginController::class,'authenticate'])->name('login.authen
 // Route::group(['middleware' => 'auth'],function() {
 
 Route::get('dashboard', function () {
-				return view('welcome');
+   return view('welcome');
 });
 
 Route::get('/', function () {
-				return view('welcome');
+	return view('welcome');
 });
 
 
@@ -116,9 +116,22 @@ use App\Http\Controllers\ProductStocksController;
 Route::get('stocks',[ProductStocksController::class, 'index'])->name('stocks');	
 	
 
-//Route for ReportSales
+//Route for Reports
  use App\Http\Controllers\Report\ReportSalesController;
- Route::get('reports/sales',[ReportSalesController::class, 'index'])->name('reports.sales');	
+ Route::get('reports/sales',[ReportSalesController::class, 'index'])->name('reports.sales');
+
+ use App\Http\Controllers\Report\ReportPurchasesController;
+ Route::get('reports/purchases',[ReportPurchasesController::class, 'index'])->name('reports.purchases');
+
+ use App\Http\Controllers\Report\ReportPaymentsController;
+ Route::get('reports/payments',[ReportPaymentsController::class, 'index'])->name('reports.payments');
+
+  use App\Http\Controllers\Report\ReportReceiptsController;	
+ Route::get('reports/receipts',[ReportReceiptsController::class, 'index'])->name('reports.receipts');		
 
 
+
+
+
+// });
 

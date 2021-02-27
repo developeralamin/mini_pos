@@ -3,11 +3,11 @@
 @section('main_content')
   <div class="row page-header">
   	 <div class="col-md-4">
-  	 	<h2>Sales Reports</h2>
+  	 	<h2>Receipt Reports</h2>
   	 </div>
      <div class="col-md-8">
 
-        {!! Form::open(['route' => ['reports.sales'],'method' => 'get']) !!}
+        {!! Form::open(['route' => ['reports.receipts'],'method' => 'get']) !!}
 
           <div class="form-row align-items-center">
             <div class="col-auto">
@@ -41,7 +41,7 @@
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
   <div class="card-header py-3">
-      <h6 class="m-0 font-weight-bold text-primary">Sales Reports From 
+      <h6 class="m-0 font-weight-bold text-primary">Receipts Reports From 
          <strong>{{ $start_date }}</strong> to <strong>{{ $end_date }}</strong></h6>
   </div>
 
@@ -52,22 +52,18 @@
     <table class="table table-borderedless table-striped"  width="100%" cellspacing="0">
         <thead>
             <tr>
-              <th>Date</th>
-                  <th>Products</th>
-                  <th class="text-right">Quantity</th>
-                  <th class="text-right">Price</th>
-                  <th class="text-right">Total</th>                  
+                  <th>Date</th>
+                  <th>User</th>
+                  <th>Total</th>                  
             </tr>
         </thead>
                                        
   <tbody>
-@foreach($sales as $sale)
+@foreach($receipts as $receipt)
        <tr>
-                  <td> {{ $sale->date }} </td>
-                  <td> {{ $sale->title }} </td>
-                  <td class="text-right"> {{ $sale->quantity }} </td>
-                  <td class="text-right"> {{ $sale->price }} </td>
-                  <td class="text-right"> {{ $sale->total }} </td>
+          <td> {{ $receipt->date }} </td>
+          <td> {{ optional($receipt->user)->name }} </td>
+          <td> {{ $receipt->amount }} </td>
          
      </tr>
  @endforeach
@@ -75,11 +71,9 @@
 </tbody>
 
            <tr>
-              <th></th>
-              <th class="text-right">Total Items:</th>
-              <th class="text-right">{{ $sales->sum('quantity') }}</th>
-               <th class="text-right">Total:</th>
-              <th class="text-right">{{ $sales->sum('total') }}</th>                   
+                  <th>Date</th>
+                  <th>User</th>
+                  <th>{{ $receipts->sum('amount') }}</th>                       
             </tr>
    </table>
    </div>

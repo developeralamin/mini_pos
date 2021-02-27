@@ -15,7 +15,9 @@ use Illuminate\Support\Facades\Auth;
 class UserSalesController extends Controller
 
 {
+
    public function __construct(){
+        parent::__construct();
        $this->data['tab_menu']    = 'sales';
    }
    

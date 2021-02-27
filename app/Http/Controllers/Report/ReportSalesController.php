@@ -9,10 +9,19 @@ use App\Models\SaleItem;
 class ReportSalesController extends Controller
 {
 
+public function __construct()
+ {
+    parent::__construct();
+ 	$this->data['main_menu']  = 'Reports';
+ 	$this->data['sub_menu']   = 'Sales';
+
+ }
+
+
  public function index( Request $request)
   {
-     $this->data['start_date']  = $request->get('start_date', date('Y-M-D'));
-     $this->data ['end_date']   = $request->get('end_date', date('Y-M-D'));
+     $this->data['start_date']  = $request->get('start_date', date('Y-m-d'));
+     $this->data ['end_date']   = $request->get('end_date', date('Y-m-d'));
 
 
 $this->data['sales']=SaleItem::select('sale_items.quantity','sale_items.price','sale_items.total','products.title','sale_invoices.challan_no','sale_invoices.date')

@@ -13,7 +13,7 @@ class LoginController extends Controller
 {
     public function login()
     {
-    	return view('login.form');
+    	return view('login.form',$this->data);
     }
 
     public function authenticate(LoginRequest $request)

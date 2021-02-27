@@ -8,6 +8,16 @@ use App\Models\Group;
 
 class UserGroupController extends Controller
 {
+
+public function __construct()
+ {
+    parent::__construct();
+    $this->data['main_menu']  = 'Users';
+    $this->data['sub_menu']   = 'Groups';
+
+ }
+
+
     public function index()
     {
     	$this->data['groups'] = Group::all();
@@ -17,7 +27,7 @@ class UserGroupController extends Controller
 
 	 public function create()
 	 {
-	 	return view('groups.create');
+	 	return view('groups.create',$this->data);
 	 }
 
 	 public function store(Request $request)
