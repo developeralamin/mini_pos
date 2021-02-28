@@ -75,7 +75,7 @@ class UserSalesController extends Controller
 
 
 
-  public function destroyItem( $user_id , $invoice_id,$item_id)
+  public function destroyItem( $user_id , $invoice_id , $item_id)
   {
       if(SaleItem::destroy($item_id)){
         Session::flash('message','Item Delete Successfully');

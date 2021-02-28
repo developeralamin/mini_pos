@@ -22,13 +22,11 @@ Route::post('login',[LoginController::class,'authenticate'])->name('login.authen
 
 // Route::group(['middleware' => 'auth'],function() {
 
-Route::get('dashboard', function () {
-   return view('welcome');
-});
 
-Route::get('/', function () {
-	return view('welcome');
-});
+use App\Http\Controllers\DashboardController;
+Route::get('dashboard',[DashboardController::class,'index'])->name('dashboard');
+Route::get('/',[DashboardController::class,'index'])->name('dashboard');
+
 
 
 

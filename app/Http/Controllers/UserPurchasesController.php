@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\PurchasesItem;
 use App\Models\PurchasesInvoice;
 use App\Models\SaleItem;
+use App\Models\SaleInvoice;
 use App\Http\Requests\InvoiceRequest;
 use App\Http\Requests\InvoiceProductRequest;
 use Illuminate\Support\Facades\Session;
@@ -25,9 +26,6 @@ class UserPurchasesController extends Controller
        parent::__construct();
     	$this->data['tab_menu'] = 'purchase';
     }
-
-
-
 
   public function createinvoice(InvoiceRequest $request, $user_id)
   
@@ -78,7 +76,7 @@ class UserPurchasesController extends Controller
 
 
 
-  public function destroyItem( $user_id , $invoice_id,$item_id)
+  public function destroyItem( $user_id , $invoice_id , $item_id)
   {
       if(PurchasesItem::destroy($item_id)){
         Session::flash('message','Item Delete Successfully');
@@ -87,15 +85,12 @@ class UserPurchasesController extends Controller
   }
 
 
-
-
-
    public function destroy($user_id , $invoice_id)
    {
-      if(SaleInvoice::destroy($invoice_id)){
+      if(PurchasesInvoice::destroy($invoice_id)){
         Session::flash('message','Invoice Deleted Successfully');
       }
-      return redirect()->route('user.sales',['id'=> $user_id]);
+      return redirect()->route('user.purchases',['id'=> $user_id]);
    }
 
 

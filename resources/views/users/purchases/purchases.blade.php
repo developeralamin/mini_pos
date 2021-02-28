@@ -58,7 +58,9 @@
           </td>
           <td class="text-right">
 
-<form method='post' action="{{ route('user.purchase.destroy',['id'=> $user->id,'invoice_id'=>$purchase->id]) }}">
+<form method='post' action="
+    {{ route('user.purchase.destroy',
+    ['id'=> $user->id,'invoice_id'=>$purchase->id] ) }}">
 
     <a href="{{ route('user.purchase.invoice_details',['id'=> $user->id,'invoice_id'=>$purchase->id]) }}"class="btn btn-info">
       <i class="fa fa-eye"></i>

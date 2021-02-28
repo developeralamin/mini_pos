@@ -67,7 +67,7 @@
       <i class="fa fa-eye"></i>
      </a> 
 
-  @if($totalQty == 0)
+    @if($totalQty == 0)
       @csrf
       @method('DELETE')               
      <button onclick="return confirm('Are you sure?')" type="submit" class="btn btn-danger"> <i class="fa fa-trash"></i>

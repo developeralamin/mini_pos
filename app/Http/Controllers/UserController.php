@@ -12,13 +12,6 @@ use App\Models\Group;
 class UserController extends Controller
 {
 
-public function __construct()
- {
-    parent::__construct();
-    $this->data['main_menu']  = 'Users';
-    $this->data['sub_menu']   = 'Users';
-
- }
     /**
      * Display a listing of the resource.
      *

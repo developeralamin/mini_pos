@@ -30,8 +30,8 @@
                                                 <th>ID</th>
                                                 <th>Group</th>
                                                 <th>Name</th>
+                                                 <th>Phone</th>
                                                 <th>Email</th>
-                                                <th>Phone</th>
                                                 <th>Address</th>
                                                 <th class="text-right">Actions</th>
                                            
@@ -42,8 +42,8 @@
                                                 <th>ID</th>
                                                 <th>Group</th>
                                                 <th>Name</th>
+                                                 <th>Phone</th>
                                                 <th>Email</th>
-                                                <th>Phone</th>
                                                 <th>Address</th>
                                                 <th class="text-right">Actions</th>
                                             </tr>
@@ -55,8 +55,8 @@
           <td>{{ $user->id }}</td>
           <td>{{ $user->group->title}}</td>
           <td>{{ $user->name }}</td>
-          <td>{{ $user->email }}</td>
           <td>{{ $user->phone }}</td>
+          <td>{{ $user->email }}</td> 
           <td>{{ $user->address }}</td>
           <td class="text-right">
 

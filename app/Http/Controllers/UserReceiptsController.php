@@ -56,9 +56,6 @@ class UserReceiptsController extends Controller
   }
 
 
-
-
-
   public function destroy($user_id , $payment_id)
 
   {

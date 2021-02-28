@@ -21,7 +21,8 @@ class LoginController extends Controller
     	 $data = $request->only('email', 'password');
 
       if (Auth::attempt($data)) {
-        return redirect()->intended('dashboard');
+        return redirect()->intended('dashoboard');
+      //dashoboard not work thats why use user
       }
       else{
       	  return redirect()->route('login')->withErrors(['Invalid Email and Password']);
