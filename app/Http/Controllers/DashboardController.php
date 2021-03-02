@@ -28,10 +28,8 @@ class DashboardController extends Controller
 	    $this->data['purchase_items']  = PurchasesItem::sum('total');
 	    $this->data['receipt']         = Receipt::sum('amount');
 	    $this->data['payment']         = Payment::sum('amount');
-	    $this->data['stocks']         = 
-	         PurchasesItem::sum('quantity') - SaleItem::sum('quantity');
-
-
+	    $this->data['stocks']          = 
+	    PurchasesItem::sum('quantity') - SaleItem::sum('quantity');
 
     	return view('dashboard',$this->data);
     }

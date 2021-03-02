@@ -84,6 +84,16 @@
  </div>
 </div>
 
+
+<div class="mb-3 row">
+  <label for="Name" class="col-sm-2 col-form-label">Has Stock </label>
+   <div class="col-sm-2">
+  {{  Form::select('has_stock',['1'=>'YES','0'=>'NO'],NULL,['class '=>'form-control','id' => 'product']) }}
+  </div>
+</div>
+
+
+
 <div class="col-md-3 mt-4 text-right">
 	<input type="submit" class="btn btn-info" value="Submit">
 </div>

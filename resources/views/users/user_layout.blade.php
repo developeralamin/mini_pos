@@ -114,9 +114,9 @@
 
 
     <div class="mb-3 row">
-      <label for="challan_no" class="col-sm-2 col-form-label">Challan Number<span class="text-danger">*</span></label>
+      <label for="challan_no" class="col-sm-2 col-form-label">Challan Number</label>
        <div class="col-sm-10">
-      {{ Form::text('challan_no',NULL,['class '=>'form-control', 'required','id' => 'challan_no','placeholder' => 'Challan Number']) }}
+      {{ Form::text('challan_no',NULL,['class '=>'form-control','id' => 'challan_no','placeholder' => 'Challan Number']) }}
       </div>
     </div>
 
@@ -170,9 +170,9 @@
 
 
     <div class="mb-3 row">
-      <label for="challan_no" class="col-sm-2 col-form-label">Challan Number<span class="text-danger">*</span></label>
+      <label for="challan_no" class="col-sm-2 col-form-label">Challan Number</label>
        <div class="col-sm-10">
-      {{ Form::text('challan_no',NULL,['class '=>'form-control', 'required','id' => 'challan_no','placeholder' => 'Challan Number']) }}
+      {{ Form::text('challan_no',NULL,['class '=>'form-control','id' => 'challan_no','placeholder' => 'Challan Number']) }}
       </div>
     </div>
 

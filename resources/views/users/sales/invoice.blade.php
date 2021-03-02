@@ -127,7 +127,8 @@
     <div class="mb-3 row">
       <label for="unit_price" class="col-sm-2 col-form-label">Unit Price<span class="text-danger">*</span></label>
        <div class="col-sm-10">
-      {{ Form::text('price',NULL,['class '=>'form-control', 'required','id' => 'unit_price','placeholder' => 'Unit Price']) }}
+      {{ Form::text('price',NULL,['class '=>'form-control', 
+      'onkeyup' =>'getTotal()','required','id' => 'unit_price','placeholder' => 'Unit Price']) }}
       </div>
     </div>
 
@@ -135,7 +136,8 @@
       <div class="mb-3 row">
         <label for="quantity" class="col-sm-2 col-form-label">Quantity<span class="text-danger">*</span></label>
          <div class="col-sm-10">
-          {{ Form::text('quantity',NULL,['class '=>'form-control','required','id' => 'quantity','placeholder' => 'Quantity']) }}        
+          {{ Form::text('quantity',NULL,['class '=>'form-control',
+          'onkeyup' => 'getTotal()','required','id' => 'quantity','placeholder' => 'Quantity']) }}        
         </div>
       </div>
 
@@ -215,7 +217,18 @@
   </div>
 </div>
 
+<script type="text/javascript">
 
+    function getTotal() {
+      var price     = document.getElementById("unit_price").value;
+      var quantity  = document.getElementById("quantity").value;
+      if ( price && quantity ) {
+        var total = price * quantity;
+        document.getElementById("total").value = total;
+      }
+    }
+    
+  </script>
 
 
 

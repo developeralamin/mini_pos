@@ -27,9 +27,9 @@
               <th>ID</th>
               <th>Category</th>
               <th>Title</th>
-              {{-- <th>Description</th> --}}
               <th>Cost Price</th>
-              <th>Price</th>
+              <th>Sale Price</th>
+              <th>Hash Stock</th>
               <th class="text-right">Actions</th>                          
             </tr>
         </thead>
@@ -38,9 +38,9 @@
               <th>ID</th>
               <th>Category</th>
               <th>Title</th>
-{{--               <th>Description</th>
- --}}              <th>Cost Price</th>
-              <th>Price</th>
+              <th>Cost Price</th>
+              <th>Sale Price</th>
+              <th>Hash Stock</th>
                 <th class="text-right">Actions</th>
               </tr>
           </tfoot>
@@ -54,6 +54,7 @@
           {{-- <td>{{ $product->description }}</td> --}}
           <td>{{ $product->cost_price }}</td>
           <td>{{ $product->price }}</td>
+          <td>{{ ($product->has_stock == 1) ? 'YES':'NO' }}</td>
           <td class="text-right">
 
 <form method='post' action="{{ route('products.destroy',['product'=> $product->id]) }}">

@@ -28,8 +28,6 @@ Route::get('dashboard',[DashboardController::class,'index'])->name('dashboard');
 Route::get('/',[DashboardController::class,'index'])->name('dashboard');
 
 
-
-
 Route::get('logout',[LoginController::class,'logout'])->name('logout');
 
 
@@ -60,8 +58,6 @@ Route::post('users/{id}/invoices/{invoice_id}',[UserSalesController::class,'addi
 
 Route::delete('users/{id}/invoices/{invoice_id}/{item_id}',[UserSalesController::class,'destroyItem'])->name('user.sales.invoice.delete_item');
 
-
-
 //Route for Purchases
 
 use App\Http\Controllers\UserPurchasesController;
@@ -77,8 +73,6 @@ Route::delete('users/{id}/purchases/{invoice_id}',[UserPurchasesController::clas
 Route::post('users/{id}/purchases/{invoice_id}',[UserPurchasesController::class,'additem'])->name('user.purchase.additem');
 
 Route::delete('users/{id}/purchases/{invoice_id}/{item_id}',[UserPurchasesController::class,'destroyItem'])->name('user.purchase.delete_item');
-
-
 
 
 //Route for Payment
@@ -124,8 +118,12 @@ Route::get('stocks',[ProductStocksController::class, 'index'])->name('stocks');
  use App\Http\Controllers\Report\ReportPaymentsController;
  Route::get('reports/payments',[ReportPaymentsController::class, 'index'])->name('reports.payments');
 
-  use App\Http\Controllers\Report\ReportReceiptsController;	
- Route::get('reports/receipts',[ReportReceiptsController::class, 'index'])->name('reports.receipts');		
+ use App\Http\Controllers\Report\ReportReceiptsController;	
+ Route::get('reports/receipts',[ReportReceiptsController::class, 'index'])->name('reports.receipts');
+
+
+use App\Http\Controllers\Report\DayReportsController;			
+Route::get('reports/days',[DayReportsController::class, 'index'])->name('reports.days');		
 
 
 
