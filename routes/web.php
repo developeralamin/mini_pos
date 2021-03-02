@@ -92,6 +92,8 @@ Route::post('users/{id}/receipts/{invoice_id?}',[UserReceiptsController::class,'
 
 Route::delete('users/{id}/receipts/{receipts_id}',[UserReceiptsController::class,'destroy'])->name('user.receipts.destroy');
 
+use App\Http\Controllers\UserReportsController;
+Route::get('users/{id}/reports',[UserReportsController::class,'report'])->name('users.reports');
 
 
 //Route for Category

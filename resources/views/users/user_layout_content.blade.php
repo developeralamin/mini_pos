@@ -6,6 +6,8 @@
       <div class="nav flex-column nav-pills">
         <a class="nav-link @if($tab_menu == 'user_info') active @endif" href="{{route('users.show', $user->id)}}">User Info</a>
 
+        <a class="nav-link @if($tab_menu == 'reports') active @endif" href="{{route('users.reports',$user->id)}}">Reports</a>
+
         <a class="nav-link @if($tab_menu == 'sales') active @endif" href="{{ route('user.sales',$user->id) }}">Sales</a>
 
         <a class="nav-link  @if($tab_menu == 'purchase') active @endif" href="{{ route('user.purchases',$user->id) }}">Purchase</a>
