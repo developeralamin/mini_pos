@@ -24,10 +24,10 @@ class UpdateUserRequest extends FormRequest
     public function rules()
     {
         return [
-           'group_id' => 'required',
-           'name' => 'required|string',
-           'email' => 'required|email',
-           'phone' => 'required|numeric',
+           'group_id'  => 'required',
+           'name'      => 'required|string',
+           'email'     => 'required|email',
+           'phone'     => 'required|numeric',
         ];
     }
 }

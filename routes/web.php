@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-// use Illuminate\Support\Facades\Auth;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 //Route for Login
-use App\Http\Controllers\auth\LoginController;
+use App\Http\Controllers\Auth\LoginController;
 Route::get('login',[LoginController::class,'login'])->name('login');
 Route::post('login',[LoginController::class,'authenticate'])->name('login.authenticate');
 
